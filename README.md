@@ -12,13 +12,13 @@ For installing the dependencies, execute by terminal with node js installed  ``n
 
 ## How to use
 
-Here is a JavaScript example of fetching the entire API. Just change tha value of the const ``urlToFetch`` for changing the URL being fetched. ``urlToFetch`` value can be changed by an endpoint of this (or another) API for fetching different APIs <br>
+Here is a JavaScript example of fetching the entire API. Just change tha value of the const ``baseUrl`` for changing the URL being fetched. ``baseUrl`` value can be changed by an endpoint of this (or another) API for fetching different APIs <br>
 
 ```javascript
 
-const urlToFetch = "https://hp-api.onrender.com"
+const baseUrl = "https://hp-api.onrender.com"
 
-fetch(urlToFetch)
+fetch(baseUrl)
 	.then((res) => res.json())
 	.then((data) => {
 		// It fetches all data at the API and it returns it at the console
