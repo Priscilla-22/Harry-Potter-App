@@ -1,9 +1,39 @@
+body{
+    /* background-color: black; */
+}
+
 .actor-img {
     width: 200px;
     height: 350px;
+    padding:2px solid white;
+    /* border-color:1px solid white; */
 }
-
+.house-logo{
+    width:100px;
+    height:100px;
+}
 span {
     font-weight: 1000;
 }
 
+.details-table {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+.label-cell,
+.value-cell {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+}
+
+.label-cell {
+    font-weight: bold;
+    /* Make label cells bold */
+}
+
+.details-table tr:nth-child(even) {
+    background-color: #f9f9f9;
+    /* Add background color to alternate rows for better readability */
+}
