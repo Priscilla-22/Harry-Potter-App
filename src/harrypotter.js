@@ -31,15 +31,15 @@ document.addEventListener('DOMContentLoaded', () => {
     castName.classList.add('cast-name');
     castName.textContent = cast.name || '';
 
-  const altName = document.createElement('p');
-  altName.classList.add('alt-name');
-  if (
-    cast.alternate_names !== undefined &&
-    cast.alternate_names !== null &&
-    cast.alternate_names.length > 0
-  ) {
-    altName.innerHTML = `<strong>AKA:</strong> ${cast.alternate_names}`;
-  }
+    const altName = document.createElement('p');
+    altName.classList.add('alt-name');
+    if (
+      cast.alternate_names !== undefined &&
+      cast.alternate_names !== null &&
+      cast.alternate_names.length > 0
+    ) {
+      altName.innerHTML = `<strong>AKA:</strong> ${cast.alternate_names}`;
+    }
 
     const actor = document.createElement('p');
     actor.classList.add('actor');
@@ -59,6 +59,28 @@ document.addEventListener('DOMContentLoaded', () => {
       actor,
       personality
     );
+    // element for the house logo
+    const houseLogo = document.createElement('img');
+    houseLogo.classList.add('house-logo');
+
+    const houseLogoPaths = {
+      Gryffindor:
+        'https://ik.imagekit.io/96nylqpko/Gryffindor_ClearBG.jpg?updatedAt=1705429922438',
+      Hufflepuff:
+        'https://ik.imagekit.io/96nylqpko/Hufflepuff_ClearBG.jpg?updatedAt=1705430668687',
+      Ravenclaw:
+        'https://ik.imagekit.io/96nylqpko/RavenclawCrest%20.jpg?updatedAt=1705430510801',
+      Slytherin:
+        'https://ik.imagekit.io/96nylqpko/Slytherin_ClearBG.jpg?updatedAt=1705429979031',
+    };
+
+    houseLogo.src =
+      houseLogoPaths[cast.house] ||
+      'https://ik.imagekit.io/96nylqpko/hogwarslegacy-houses-poll.jpg?updatedAt=1705432789063';
+
+    castDetailsContainer.appendChild(houseLogo);
+
+    castDetailsContainer.appendChild(houseLogo);
 
     const moreDetailsContainer = createMoreDetailsContainer(cast);
     moreDetailsContainer.classList.add('more-info');
@@ -92,58 +114,49 @@ document.addEventListener('DOMContentLoaded', () => {
     return moreDetailsContainer;
   }
 
-  function createMoreDetailsContent(cast) {
-    const moreDetailsContent = document.createElement('div');
+function createMoreDetailsContent(cast) {
+  const moreDetailsContent = document.createElement('div');
+  const table = document.createElement('table');
+  table.classList.add('details-table');
 
-    moreDetailsContent.innerHTML = `
-    ${
-      cast.wand && cast.wand.wood
-        ? `<p><strong> Wand:</strong> ${cast.wand.wood} <span>|</span> ${cast.wand.core} <span>|</span> ${cast.wand.length} </p>`
-        : ''
-    }
-    ${cast.house ? `<p><strong>House:</strong> ${cast.house}</p>` : ''}
-    ${
-      cast.dateOfBirth
-        ? `<p><strong>Date of Birth:</strong> ${cast.dateOfBirth}</p>`
-        : ''
-    }
-    ${
-      cast.yearOfBirth
-        ? `<p><strong>Year of Birth:</strong> ${cast.yearOfBirth}</p>`
-        : ''
-    }
-    ${
-      cast.wizard
-        ? `<p><strong>Wizard:</strong> ${cast.wizard ? 'Yes' : 'No'}</p>`
-        : ''
-    }
-    ${cast.ancestry ? `<p><strong>Ancestry:</strong> ${cast.ancestry}</p>` : ''}
-    ${
-      cast.eyeColour
-        ? `<p><strong>Eye color:</strong> ${cast.eyeColour}</p>`
-        : ''
-    }
-    ${
-      cast.hairColour
-        ? `<p><strong>Hair Color:</strong> ${cast.hairColour}</p>`
-        : ''
-    }
-    ${cast.patronus ? `<p><strong>Patronus:</strong> ${cast.patronus}</p>` : ''}
-    ${
-      cast.hogwartsStudent
-        ? `<p><strong>Hogwart's Student:</strong> ${cast.hogwartsStudent}</p>`
-        : ''
-    }
-    ${
-      cast.hogwartsStaff
-        ? `<p><strong>Hogwart's Staff:</strong> ${cast.hogwartsStaff}</p>`
-        : ''
-    }
-    ${cast.alive ? `<p><strong>Alive:</strong> ${cast.alive}</p>` : ''}
-  `;
+  const addTableRow = (label, value) => {
+    const row = document.createElement('tr');
 
-    return moreDetailsContent;
-  }
+    const labelCell = document.createElement('td');
+    labelCell.classList.add('label-cell');
+    labelCell.textContent = label;
+
+    const valueCell = document.createElement('td');
+    valueCell.classList.add('value-cell');
+    valueCell.textContent = value;
+
+    row.appendChild(labelCell);
+    row.appendChild(valueCell);
+
+    table.appendChild(row);
+  };
+
+  // Use ternary operator to conditionally add table rows
+  cast.wand && cast.wand.wood && addTableRow('Wand Wood', cast.wand.wood);
+  cast.wand && cast.wand.core && addTableRow('Wand Core', cast.wand.core);
+  cast.wand && cast.wand.length && addTableRow('Wand Length', cast.wand.length);
+  cast.house && addTableRow('House', cast.house);
+  cast.dateOfBirth && addTableRow('Date of Birth', cast.dateOfBirth);
+  cast.yearOfBirth && addTableRow('Year of Birth', cast.yearOfBirth);
+  cast.wizard && addTableRow('Wizard', cast.wizard ? 'Yes' : 'No');
+  cast.ancestry && addTableRow('Ancestry', cast.ancestry);
+  cast.eyeColour && addTableRow('Eye color', cast.eyeColour);
+  cast.hairColour && addTableRow('Hair Color', cast.hairColour);
+  cast.patronus && addTableRow('Patronus', cast.patronus);
+  cast.hogwartsStudent &&
+    addTableRow("Hogwart's Student", cast.hogwartsStudent);
+  cast.hogwartsStaff && addTableRow("Hogwart's Staff", cast.hogwartsStaff);
+  cast.alive && addTableRow('Alive', cast.alive);
+
+  moreDetailsContent.appendChild(table);
+  return moreDetailsContent;
+}
+
 
   function goBack() {
     currentCastId = Math.max(1, currentCastId - 1);
