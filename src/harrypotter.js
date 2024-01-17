@@ -15,7 +15,7 @@ document.addEventListener('DOMContentLoaded', () => {
         console.error('Error fetching cast details:', err);
       });
   }
-  
+
   //search functionality
   document
     .querySelector('#searchInput')
@@ -27,9 +27,9 @@ document.addEventListener('DOMContentLoaded', () => {
         const itemText = item.textContent.toLowerCase();
 
         if (itemText.startsWith(searchTerm)) {
-          item.display = 'listItems';
+        item.classList.add('show');
         } else {
-          item.style.display = 'none';
+        item.classList.remove('show');
         }
       });
     });
