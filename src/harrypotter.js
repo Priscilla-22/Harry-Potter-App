@@ -32,6 +32,11 @@ document.addEventListener('DOMContentLoaded', () => {
         item.classList.remove('show');
         }
       });
+      if (searchTerm === '') {
+        listItems.forEach((item) => {
+          item.classList.remove('show');
+        });
+      }
     });
 
   fetch(baseUrl)
