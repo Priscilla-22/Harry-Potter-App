@@ -2,6 +2,47 @@ body {
     /* background-color: black; */
 }
 
+.popup-container {
+    position: absolute;
+    top: 50px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: white;
+    border: 1px solid #ccc;
+    padding: 10px;
+    z-index: 1000;
+    display: none;
+}
+
+.popup-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.popup-table th,
+.popup-table td {
+    border: 1px solid #ccc;
+    padding: 8px;
+    text-align: left;
+}
+
+.popup-table th {
+    font-weight: bold;
+}
+
+.popup-table thead {
+    display: block;
+}
+
+.popup-table tbody {
+    max-height: 300px;
+    overflow-y: auto;
+}
+
+.popup-table tr {
+    display: table-row;
+}
+
 .castNames {
     display: none;
 }
