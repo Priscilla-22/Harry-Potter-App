@@ -1,6 +1,8 @@
 document.addEventListener('DOMContentLoaded', () => {
   const baseUrl = 'http://localhost:3000/data';
-
+  const castNameListContainer = document.querySelector(
+    '.castNameList-container'
+  );
   const castContainer = document.querySelector('.cast-container');
 
   let currentCastId = 1;
@@ -22,6 +24,7 @@ document.addEventListener('DOMContentLoaded', () => {
     .addEventListener('input', function (e) {
       const searchTerm = e.target.value.toLowerCase();
       const listItems = document.querySelectorAll('.castNames');
+      const tableRows = document.querySelectorAll('#castName-table tbody tr');
 
       listItems.forEach((item) => {
         const itemText = item.textContent.toLowerCase();
@@ -32,10 +35,56 @@ document.addEventListener('DOMContentLoaded', () => {
           item.classList.remove('show');
         }
       });
+
+      tableRows.forEach((row) => {
+        row.style.display = 'none';
+      });
+
       if (searchTerm === '') {
         listItems.forEach((item) => {
           item.classList.remove('show');
         });
+      } else {
+        fetch(baseUrl)
+          .then((resp) => resp.json())
+          .then((data) => {
+            const popupContainer = document.createElement('div');
+            popupContainer.classList.add('popup-container');
+
+            const popupTable = document.createElement('table');
+            popupTable.classList.add('popup-table');
+
+            const headerRow = document.createElement('tr');
+            headerRow.innerHTML = `
+            <th>Name</th>
+            <th>Actor</th>
+            <th>Year of Birth</th>
+            <th>House</th>
+          `;
+            const tbody = document.createElement('tbody');
+            tbody.appendChild(headerRow);
+            popupTable.appendChild(tbody);
+
+            data.forEach((cast) => {
+              if (cast.name.toLowerCase().startsWith(searchTerm)) {
+                const row = document.createElement('tr');
+                row.innerHTML = `
+                <td>${cast.name}</td>
+                <td>${cast.actor || ''}</td>
+                <td>${cast.yearOfBirth || ''}</td>
+                <td>${cast.house || ''}</td>
+              `;
+                tbody.appendChild(row); 
+              }
+            });
+            popupContainer.appendChild(popupTable);
+
+            document.body.appendChild(popupContainer);
+            popupContainer.style.display = 'block';
+            e.target.addEventListener('input', () => {
+              popupContainer.remove();
+            });
+          });
       }
     });
 
@@ -47,24 +96,43 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-
-
   fetch(baseUrl)
     .then((resp) => resp.json())
     .then((data) => {
       const castNameList = document.querySelector('#castName-list');
 
       data.forEach((cast) => {
-        const itemList = document.createElement('li');
-        itemList.classList.add('castNames');
-        itemList.textContent = cast.name;
-        itemList.addEventListener('click', () => {
+        const tableRow = document.createElement('tr');
+        tableRow.classList.add('cast-row');
+
+        const itemCell = document.createElement('td');
+        itemCell.classList.add('castNames');
+        itemCell.textContent = cast.name;
+        itemCell.addEventListener('click', () => {
           currentCastId = cast.id;
           clearCastList();
           renderCastDetails(cast);
           document.querySelector('#searchInput').value = '';
         });
-        castNameList.appendChild(itemList);
+
+        const actorCell = document.createElement('td');
+        actorCell.textContent = cast.actor || '';
+
+        const yearOfBirthCell = document.createElement('td');
+        yearOfBirthCell.textContent = cast.yearOfBirth || '';
+
+        const houseLogoCell = document.createElement('td');
+        const houseLogo = document.createElement('img');
+        houseLogo.classList.add('small-house-logo');
+        houseLogo.src = houseLogoPaths[cast.house] || 'default-house-logo.jpg';
+        houseLogoCell.appendChild(houseLogo);
+
+        tableRow.appendChild(itemCell);
+        tableRow.appendChild(actorCell);
+        tableRow.appendChild(yearOfBirthCell);
+        tableRow.appendChild(houseLogoCell);
+
+        castNameList.appendChild(tableRow);
       });
     });
 
