@@ -39,6 +39,11 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     });
 
+  function clearCastList() {
+    const castNameList = document.querySelector('#castName-list');
+    castNameList.innerHTML = '';
+  }
+
   fetch(baseUrl)
     .then((resp) => resp.json())
     .then((data) => {
@@ -50,6 +55,7 @@ document.addEventListener('DOMContentLoaded', () => {
         itemList.textContent = cast.name;
         itemList.addEventListener('click', () => {
           currentCastId = cast.id;
+          clearCastList();
           renderCastDetails(cast);
         });
         castNameList.appendChild(itemList);
