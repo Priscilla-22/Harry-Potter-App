@@ -67,6 +67,21 @@ document.addEventListener('DOMContentLoaded', () => {
 
             const popupTable = document.createElement('table');
             popupTable.classList.add('popup-table');
+            popupTable.addEventListener('click', (event) => {
+              if (event.target.tagName.toLowerCase() === 'td') {
+                const castName = event.target.textContent.trim();
+                const cast = data.find(
+                  (c) => c.name.toLowerCase() === castName.toLowerCase()
+                );
+                if (cast) {
+                  currentCastId = cast.id;
+                  clearCastList();
+                  renderCastDetails(cast);
+                  document.querySelector('#searchInput').value = '';
+                  document.querySelector('.popup-container').remove();
+                }
+              }
+            });
 
             const headerRow = document.createElement('tr');
             headerRow.innerHTML = `
@@ -169,6 +184,7 @@ document.addEventListener('DOMContentLoaded', () => {
       });
     });
 
+    
   function renderCastDetails(cast) {
     castContainer.innerHTML = '';
 
