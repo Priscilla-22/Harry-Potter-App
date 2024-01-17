@@ -27,9 +27,9 @@ document.addEventListener('DOMContentLoaded', () => {
         const itemText = item.textContent.toLowerCase();
 
         if (itemText.startsWith(searchTerm)) {
-        item.classList.add('show');
+          item.classList.add('show');
         } else {
-        item.classList.remove('show');
+          item.classList.remove('show');
         }
       });
       if (searchTerm === '') {
@@ -48,6 +48,10 @@ document.addEventListener('DOMContentLoaded', () => {
         const itemList = document.createElement('li');
         itemList.classList.add('castNames');
         itemList.textContent = cast.name;
+        itemList.addEventListener('click', () => {
+          currentCastId = cast.id;
+          renderCastDetails(cast);
+        });
         castNameList.appendChild(itemList);
       });
     });
@@ -95,7 +99,6 @@ document.addEventListener('DOMContentLoaded', () => {
       actor,
       personality
     );
-    // element for the house logo
     const houseLogo = document.createElement('img');
     houseLogo.classList.add('house-logo');
 
