@@ -5,6 +5,20 @@ document.addEventListener('DOMContentLoaded', () => {
   );
   const castContainer = document.querySelector('.cast-container');
 
+  const houseLogoPaths = {
+    Gryffindor:
+      'https://ik.imagekit.io/96nylqpko/Gryffindor_ClearBG.jpg?updatedAt=1705429922438',
+    Hufflepuff:
+      'https://ik.imagekit.io/96nylqpko/Hufflepuff_ClearBG.jpg?updatedAt=1705430668687',
+    Ravenclaw:
+      'https://ik.imagekit.io/96nylqpko/RavenclawCrest%20.jpg?updatedAt=1705430510801',
+    Slytherin:
+      'https://ik.imagekit.io/96nylqpko/Slytherin_ClearBG.jpg?updatedAt=1705429979031',
+  };
+
+  const defaultHouseLogoPath =
+    'https://ik.imagekit.io/96nylqpko/hogwarslegacy-houses-poll.jpg?updatedAt=1705432789063';
+
   let currentCastId = 1;
 
   function fetchCastDetails(castId) {
@@ -73,26 +87,15 @@ document.addEventListener('DOMContentLoaded', () => {
                 <td>${cast.actor || ''}</td>
                 <td>${cast.yearOfBirth || ''}</td>
               `;
-                 const houseLogoCell = document.createElement('td');
-                 const houseLogo = document.createElement('img');
+                const houseLogoCell = document.createElement('td');
+                const houseLogo = document.createElement('img');
                 houseLogo.classList.add('popup-house-logo');
-                const houseLogoPaths = {
-                  Gryffindor:
-                    'https://ik.imagekit.io/96nylqpko/Gryffindor_ClearBG.jpg?updatedAt=1705429922438',
-                  Hufflepuff:
-                    'https://ik.imagekit.io/96nylqpko/Hufflepuff_ClearBG.jpg?updatedAt=1705430668687',
-                  Ravenclaw:
-                    'https://ik.imagekit.io/96nylqpko/RavenclawCrest%20.jpg?updatedAt=1705430510801',
-                  Slytherin:
-                    'https://ik.imagekit.io/96nylqpko/Slytherin_ClearBG.jpg?updatedAt=1705429979031',
-                };
 
-                 houseLogo.src =
-                   houseLogoPaths[cast.house] ||
-                   'https://ik.imagekit.io/96nylqpko/hogwarslegacy-houses-poll.jpg?updatedAt=1705432789063';
-                 houseLogoCell.appendChild(houseLogo);
-                 row.appendChild(houseLogoCell);
-                tbody.appendChild(row); 
+                houseLogo.src =
+                  houseLogoPaths[cast.house] || defaultHouseLogoPath;
+                houseLogoCell.appendChild(houseLogo);
+                row.appendChild(houseLogoCell);
+                tbody.appendChild(row);
               }
             });
             popupContainer.appendChild(popupTable);
@@ -106,18 +109,18 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     });
 
-     document.addEventListener('click', (event) => {
-       const popupContainer = document.querySelector('.popup-container');
-       const searchInput = document.querySelector('#searchInput');
+  document.addEventListener('click', (event) => {
+    const popupContainer = document.querySelector('.popup-container');
+    const searchInput = document.querySelector('#searchInput');
 
-       if (
-         popupContainer &&
-         !popupContainer.contains(event.target) &&
-         event.target !== searchInput
-       ) {
-         popupContainer.remove();
-       }
-     });
+    if (
+      popupContainer &&
+      !popupContainer.contains(event.target) &&
+      event.target !== searchInput
+    ) {
+      popupContainer.remove();
+    }
+  });
   function clearCastList() {
     const listItems = document.querySelectorAll('.castNames');
 
@@ -211,26 +214,9 @@ document.addEventListener('DOMContentLoaded', () => {
     );
     const houseLogo = document.createElement('img');
     houseLogo.classList.add('house-logo');
-
-    const houseLogoPaths = {
-      Gryffindor:
-        'https://ik.imagekit.io/96nylqpko/Gryffindor_ClearBG.jpg?updatedAt=1705429922438',
-      Hufflepuff:
-        'https://ik.imagekit.io/96nylqpko/Hufflepuff_ClearBG.jpg?updatedAt=1705430668687',
-      Ravenclaw:
-        'https://ik.imagekit.io/96nylqpko/RavenclawCrest%20.jpg?updatedAt=1705430510801',
-      Slytherin:
-        'https://ik.imagekit.io/96nylqpko/Slytherin_ClearBG.jpg?updatedAt=1705429979031',
-    };
-
-    houseLogo.src =
-      houseLogoPaths[cast.house] ||
-      'https://ik.imagekit.io/96nylqpko/hogwarslegacy-houses-poll.jpg?updatedAt=1705432789063';
+    houseLogo.src = houseLogoPaths[cast.house] || defaultHouseLogoPath;
 
     castDetailsContainer.appendChild(houseLogo);
-
-    castDetailsContainer.appendChild(houseLogo);
-
     const moreDetailsContainer = createMoreDetailsContainer(cast);
     moreDetailsContainer.classList.add('more-info');
 
