@@ -57,6 +57,7 @@ document.addEventListener('DOMContentLoaded', () => {
           currentCastId = cast.id;
           clearCastList();
           renderCastDetails(cast);
+          document.querySelector('#searchInput').value = ''; 
         });
         castNameList.appendChild(itemList);
       });
