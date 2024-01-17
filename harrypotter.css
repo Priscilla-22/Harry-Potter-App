@@ -1,17 +1,27 @@
-body{
+body {
     /* background-color: black; */
+}
+
+.castNames {
+    display: none;
+}
+
+.castNames.show {
+    display: block;
 }
 
 .actor-img {
     width: 200px;
     height: 350px;
-    padding:2px solid white;
+    padding: 2px solid white;
     /* border-color:1px solid white; */
 }
-.house-logo{
-    width:100px;
-    height:100px;
+
+.house-logo {
+    width: 100px;
+    height: 100px;
 }
+
 span {
     font-weight: 1000;
 }
