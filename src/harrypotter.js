@@ -39,24 +39,14 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     });
 
-function clearCastList() {
-  const castNameList = document.querySelector('#castName-list');
-  const listItems = document.querySelectorAll('.castNames');
+  function clearCastList() {
+    const listItems = document.querySelectorAll('.castNames');
 
-  listItems.forEach((item) => {
-    item.classList.remove('show');
-  });
+    listItems.forEach((item) => {
+      item.classList.remove('show');
+    });
+  }
 
-  const searchTerm = document.querySelector('#searchInput').value.toLowerCase();
-
-  listItems.forEach((item) => {
-    const itemText = item.textContent.toLowerCase();
-
-    if (searchTerm === '' || itemText.startsWith(searchTerm)) {
-      item.classList.add('show');
-    }
-  });
-}
 
 
   fetch(baseUrl)
@@ -72,7 +62,7 @@ function clearCastList() {
           currentCastId = cast.id;
           clearCastList();
           renderCastDetails(cast);
-          document.querySelector('#searchInput').value = ''; 
+          document.querySelector('#searchInput').value = '';
         });
         castNameList.appendChild(itemList);
       });
