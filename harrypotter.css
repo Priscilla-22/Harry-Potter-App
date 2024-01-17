@@ -12,6 +12,8 @@ body {
     padding: 10px;
     z-index: 1000;
     display: none;
+    max-height: 200px;
+    overflow-y: auto;
 }
 
 .popup-table {
@@ -49,6 +51,12 @@ body {
     object-fit: cover;
     margin-right: 5px;
 }
+
+.popup-table tbody {
+    max-height: 150px;
+    overflow-y: auto;
+}
+
 
 .castNames {
     display: none;
