@@ -50,7 +50,7 @@ h1 {
     max-height: 200px;
     width: 500px;
     overflow-y: auto;
-    background-color: #0e1622;
+    /* background-color: #0e1622; */
 
 }
 
@@ -83,7 +83,7 @@ h1 {
 }
 
 .popup-table td {
-    color: white;
+    /* color: white; */
 }
 
 .popup-table th {
@@ -204,7 +204,6 @@ span {
 .toggle-details-btn {
     cursor: pointer;
     transition: transform 0.3 ease-in-out;
-    display: flex-start;
 }
 
 .toggle-details-btn:hover {
@@ -213,7 +212,7 @@ span {
 
 details {
     margin-left: 330px;
-    margin-top: -120px;
+    margin-top: -90px;
 }
 
 .details-table {
@@ -237,10 +236,18 @@ details {
     background-color: #f9f9f9;
 }
 
+.more-details-content {
+    max-height: 150px;
+    overflow-y: auto;
+    border: 1px solid #ccc;
+}
+
+
 .btn-go-back {
-    margin-left: 20%;
+    margin-left: 15%;
     margin-right: 30px;
     border-radius: 6px;
+    margin-top: 70px;
     padding: 5px;
     transition: transform 0.3 ease-in-out;
 
@@ -262,7 +269,7 @@ details {
     cursor: pointer;
 }
 
-#comment-container {
+/* #comment-container {
     margin-top: 50px;
     margin-left: 60%;
-}
+} */
