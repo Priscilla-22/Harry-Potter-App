@@ -203,10 +203,15 @@ document.addEventListener('DOMContentLoaded', () => {
     const castDetailsContainer = document.createElement('div');
     castDetailsContainer.id = 'casts-details';
 
+    const imgContainer = document.createElement('div');
+    imgContainer.classList.add('imgContainer');
     const actorImg = document.createElement('img');
     actorImg.classList.add('actor-img');
     actorImg.src = cast.image;
     actorImg.alt = cast.title;
+
+    const briefInfoContainer = document.createElement('div');
+    briefInfoContainer.classList.add('briefInfoContainer');
 
     const castName = document.createElement('h3');
     castName.classList.add('cast-name');
@@ -233,13 +238,17 @@ document.addEventListener('DOMContentLoaded', () => {
     } <span>|</span> ${cast.gender || ''} <hr>`;
 
     castContainer.appendChild(castDetailsContainer);
-    castDetailsContainer.append(
-      actorImg,
-      castName,
-      altName,
-      actor,
-      personality
-    );
+    castDetailsContainer.append(imgContainer);
+    castDetailsContainer.append(briefInfoContainer);
+    imgContainer.appendChild(actorImg);
+    briefInfoContainer.appendChild(castName);
+    briefInfoContainer.appendChild(altName);
+    briefInfoContainer.appendChild(actor);
+    briefInfoContainer.appendChild(personality);
+
+    const houseLogoContainer = document.createElement('div')
+    houseLogoContainer.classList.add('houseLogoContainer')
+
     const houseLogo = document.createElement('img');
     houseLogo.classList.add('house-logo');
     houseLogo.src = houseLogoPaths[cast.house] || defaultHouseLogoPath;
@@ -248,19 +257,9 @@ document.addEventListener('DOMContentLoaded', () => {
     const moreDetailsContainer = createMoreDetailsContainer(cast);
     moreDetailsContainer.classList.add('more-info');
 
+    castDetailsContainer.appendChild(houseLogoContainer)
+    houseLogoContainer.appendChild(houseLogo)
     castContainer.appendChild(moreDetailsContainer);
-  }
-
-  function createMoreDetailsContainer(cast) {
-    const moreDetailsContainer = document.createElement('div');
-    moreDetailsContainer.id = 'more-details-container';
-
-    const moreDetailsBtn = createMoreDetailsButton();
-    const moreDetailsContent = createMoreDetailsContent(cast);
-
-    moreDetailsContainer.append(moreDetailsBtn, moreDetailsContent);
-
-    return moreDetailsContainer;
   }
 
   function createMoreDetailsContainer(cast) {
@@ -270,6 +269,9 @@ document.addEventListener('DOMContentLoaded', () => {
     const moreDetailsBtn = document.createElement('summary');
     moreDetailsBtn.innerText = 'More Details ';
     moreDetailsBtn.classList.add('toggle-details-btn');
+    moreDetailsBtn.addEventListener('click', function () {
+      moreDetailsContent.toggleAttribute('open');
+    })
 
     moreDetailsContainer.appendChild(moreDetailsBtn);
     moreDetailsContainer.appendChild(createMoreDetailsContent(cast));
