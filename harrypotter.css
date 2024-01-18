@@ -120,6 +120,11 @@ h1 {
     overflow-y: auto;
 }
 
+.cast-name {
+    font-family: 'Harry P', sans-serif;
+    letter-spacing: 4px;
+    font-size: 30px;
+}
 
 .castNames {
     display: none;
@@ -164,6 +169,7 @@ h1 {
 .houseLogoContainer {
     height: 60px;
     margin-top: 30px;
+    margin-left: 20px;
 }
 
 /* .detailsContainer {
@@ -258,5 +264,5 @@ details {
 
 #comment-container {
     margin-top: 50px;
-    margin-left: 80%;
+    margin-left: 60%;
 }
