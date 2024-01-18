@@ -337,10 +337,12 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   const goBackBtn = document.createElement('button');
+  goBackBtn.classList.add('btn-go-back');
   goBackBtn.innerText = 'Go Back';
   goBackBtn.addEventListener('click', goBack);
 
   const goForwardBtn = document.createElement('button');
+  goForwardBtn.classList.add('btn-go-forward');
   goForwardBtn.innerText = 'Go Forward';
   goForwardBtn.addEventListener('click', goForward);
 
