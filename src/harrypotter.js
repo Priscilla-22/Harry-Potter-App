@@ -33,6 +33,13 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   //search functionality
+
+  function toggleOverlay() {
+    const body = document.body;
+    const overlay = document.createElement('div');
+    overlay.classList.add('overlay');
+    body.appendChild(overlay);
+  }
   document
     .querySelector('#searchInput')
     .addEventListener('input', function (e) {
@@ -116,6 +123,8 @@ document.addEventListener('DOMContentLoaded', () => {
             popupContainer.appendChild(popupTable);
 
             document.body.appendChild(popupContainer);
+            toggleOverlay();
+
             popupContainer.style.display = 'block';
             e.target.addEventListener('input', () => {
               popupContainer.remove();
@@ -134,6 +143,10 @@ document.addEventListener('DOMContentLoaded', () => {
       event.target !== searchInput
     ) {
       popupContainer.remove();
+      const overlay = document.querySelector('.overlay');
+      if (overlay) {
+        overlay.remove();
+      }
     }
   });
   function clearCastList() {
@@ -184,7 +197,6 @@ document.addEventListener('DOMContentLoaded', () => {
       });
     });
 
-    
   function renderCastDetails(cast) {
     castContainer.innerHTML = '';
 
