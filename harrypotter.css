@@ -130,15 +130,53 @@ h1 {
     display: block;
 }
 
-.actor-img {
-    width: 200px;
-    height: 350px;
-    padding: 2px solid white;
+.cast-container {
+    width: 750px;
+    height: 450px;
+    margin: 0 auto;
+
 }
 
+#casts-details {
+    display: flex;
+    width: 90%;
+    height: 500px;
+    margin: 0 auto;
+}
+
+.imgContainer {
+    width: 250px;
+    height: 350px;
+}
+
+.actor-img {
+    width: 250px;
+    height: 350px;
+}
+
+
+
+.briefInfoContainer {
+    width: 400px;
+    height: 200px;
+    margin-left: 20px;
+    margin-top: 50px;
+}
+
+.houseLogoContainer {
+    height: 60px;
+    margin-top: 30px;
+}
+
+/* .imgContainer,
+.briefInfoContainer,
+.houseLogoContainer {
+    border: 1px solid #000;
+} */
+
 .house-logo {
-    width: 100px;
-    height: 100px;
+    width: 60px;
+    height: 60px;
 }
 
 span {
@@ -156,6 +194,13 @@ span {
     padding: 8px;
     text-align: left;
 }
+
+
+
+summary {
+    cursor: pointer;
+}
+
 
 .label-cell {
     font-weight: bold;
