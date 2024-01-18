@@ -259,6 +259,15 @@ document.addEventListener('DOMContentLoaded', () => {
     castDetailsContainer.appendChild(houseLogoContainer);
     houseLogoContainer.appendChild(houseLogo);
     castContainer.appendChild(moreDetailsContainer);
+
+    const popupContainer = document.querySelector('.popup-container');
+    if (popupContainer) {
+      popupContainer.remove();
+      const overlay = document.querySelector('.overlay');
+      if (overlay) {
+        overlay.remove();
+      }
+    }
   }
 
   function createMoreDetailsContainer(cast) {
