@@ -1,5 +1,41 @@
+@import url('https://fonts.cdnfonts.com/css/harry-p');
+
 body {
     /* background-color: black; */
+}
+
+#logo {
+    display: flex;
+
+}
+
+#hp-logo {
+    width: 55px;
+    height: 55px;
+}
+
+h1 {
+    font-family: 'Harry P', sans-serif;
+    font-size: 60px;
+    word-spacing: 10px;
+    color: #8d721a;
+    margin-left: 30%;
+    justify-content: center;
+    align-items: center;
+}
+
+#searchInput {
+    height: 20px;
+    width: 100px;
+    border: 3px solid #555;
+    display: block;
+    cursor: pointer;
+    padding-left: 5px;
+    margin-left: 50px;
+    /* float:top right; */
+    opacity: 0.7;
+    background: transparent url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='13' height='13' class='bi bi-search' viewBox='0 0 18 16'%3E%3Cpath d='M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z'%3E%3C/path%3E%3C/svg%3E") no-repeat right;
+
 }
 
 .popup-container {
@@ -13,7 +49,10 @@ body {
     z-index: 1000;
     display: none;
     max-height: 200px;
+    width: 500px;
     overflow-y: auto;
+    background-color: #0e1622;
+
 }
 
 .overlay {
@@ -40,12 +79,21 @@ body {
 .popup-table th,
 .popup-table td {
     border: 1px solid #ccc;
-    padding: 8px;
+    padding: 5px;
     text-align: left;
 }
 
+.popup-table td {
+    color: white;
+}
+
 .popup-table th {
-    font-weight: bold;
+    font-weight: 600;
+    font-size: 22px;
+    font-family: 'Harry P', sans-serif;
+    letter-spacing: 2px;
+    color: #d3aa23;
+
 }
 
 .popup-table thead {
@@ -86,7 +134,6 @@ body {
     width: 200px;
     height: 350px;
     padding: 2px solid white;
-    /* border-color:1px solid white; */
 }
 
 .house-logo {
@@ -112,10 +159,8 @@ span {
 
 .label-cell {
     font-weight: bold;
-    /* Make label cells bold */
 }
 
 .details-table tr:nth-child(even) {
     background-color: #f9f9f9;
-    /* Add background color to alternate rows for better readability */
 }
