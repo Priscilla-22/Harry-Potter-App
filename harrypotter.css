@@ -200,8 +200,9 @@ span {
     transition: transform 0.3 ease-in-out;
     display: flex-start;
 }
-.toggle-details-btn:hover{
-transform:scale(0.9)
+
+.toggle-details-btn:hover {
+    transform: scale(0.9)
 }
 
 details {
@@ -228,6 +229,31 @@ details {
 
 .details-table tr:nth-child(even) {
     background-color: #f9f9f9;
+}
+
+.btn-go-back {
+    margin-left: 20%;
+    margin-right: 30px;
+    border-radius: 6px;
+    padding: 5px;
+    transition: transform 0.3 ease-in-out;
+
+}
+
+.btn-go-back:hover {
+    transform: scale(1.1);
+    cursor: pointer;
+}
+
+.btn-go-forward {
+    border-radius: 6px;
+    padding: 5px;
+    transition: transform 0.3 ease-in-out;
+}
+
+.btn-go-forward:hover {
+    transform: scale(1.1);
+    cursor: pointer;
 }
 
 #comment-container {
