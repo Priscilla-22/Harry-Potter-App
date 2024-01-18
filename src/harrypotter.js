@@ -291,7 +291,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
   function createMoreDetailsContent(cast) {
     const moreDetailsContent = document.createElement('div');
-    moreDetailsContent.classList.add = 'more-details-content';
+    moreDetailsContent.classList.add ('more-details-content');
+
     const table = document.createElement('table');
     table.classList.add('details-table');
 
