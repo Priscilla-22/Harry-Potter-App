@@ -246,19 +246,18 @@ document.addEventListener('DOMContentLoaded', () => {
     briefInfoContainer.appendChild(actor);
     briefInfoContainer.appendChild(personality);
 
-    const houseLogoContainer = document.createElement('div')
-    houseLogoContainer.classList.add('houseLogoContainer')
+    const houseLogoContainer = document.createElement('div');
+    houseLogoContainer.classList.add('houseLogoContainer');
 
     const houseLogo = document.createElement('img');
     houseLogo.classList.add('house-logo');
     houseLogo.src = houseLogoPaths[cast.house] || defaultHouseLogoPath;
 
-    castDetailsContainer.appendChild(houseLogo);
     const moreDetailsContainer = createMoreDetailsContainer(cast);
     moreDetailsContainer.classList.add('more-info');
 
-    castDetailsContainer.appendChild(houseLogoContainer)
-    houseLogoContainer.appendChild(houseLogo)
+    castDetailsContainer.appendChild(houseLogoContainer);
+    houseLogoContainer.appendChild(houseLogo);
     castContainer.appendChild(moreDetailsContainer);
   }
 
@@ -270,9 +269,11 @@ document.addEventListener('DOMContentLoaded', () => {
     moreDetailsBtn.innerText = 'More Details ';
     moreDetailsBtn.classList.add('toggle-details-btn');
     moreDetailsBtn.addEventListener('click', function () {
+      const moreDetailsContent = document.querySelector(
+        '.more-details-content'
+      );
       moreDetailsContent.toggleAttribute('open');
-    })
-
+    });
     moreDetailsContainer.appendChild(moreDetailsBtn);
     moreDetailsContainer.appendChild(createMoreDetailsContent(cast));
 
@@ -281,6 +282,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   function createMoreDetailsContent(cast) {
     const moreDetailsContent = document.createElement('div');
+    moreDetailsContent.classList.add = 'more-details-content';
     const table = document.createElement('table');
     table.classList.add('details-table');
 
