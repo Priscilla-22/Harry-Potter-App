@@ -288,8 +288,8 @@ span {
 }
 
 .comment-form-container {
-    margin-top: 50px;
-    display: flex-start;
+    margin-top: 20px;
+    /* display: flex-start; */
 }
 
 .comment-form {
