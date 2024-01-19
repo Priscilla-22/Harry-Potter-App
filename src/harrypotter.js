@@ -349,7 +349,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     detailsContainer.appendChild(moreDetailsContainer)
     extraCastDetails.appendChild(detailsContainer);
-    return extraCastDetails;
+    return detailsContainer;
   }
 
   function createMoreDetailsContent(cast) {
@@ -399,16 +399,26 @@ document.addEventListener('DOMContentLoaded', () => {
     return moreDetailsContent;
   }
 
+
   function goBack() {
     currentCastId = Math.max(1, currentCastId - 1);
     fetchCastDetails(currentCastId);
+      clearExtraCastDetails();
+
   }
 
   function goForward() {
     currentCastId += 1;
     fetchCastDetails(currentCastId);
-  }
+      clearExtraCastDetails();
 
+  }
+function clearExtraCastDetails() {
+  const extraCastDetailsChildren = extraCastDetails.children;
+  while (extraCastDetailsChildren.length > 2) {
+    extraCastDetails.removeChild(extraCastDetailsChildren[2]);
+  }
+}
   const goBackBtn = document.createElement('button');
   goBackBtn.classList.add('btn-go-back');
   goBackBtn.innerText = 'Go Back';
