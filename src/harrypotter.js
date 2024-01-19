@@ -270,7 +270,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const moreDetailsContainer = createMoreDetailsContainer(cast);
     moreDetailsContainer.classList.add('more-info');
 
-    extraCastDetails.appendChild(moreDetailsContainer);
+    // extraCastDetails.appendChild(moreDetailsContainer);
 
     const commentsContainer = document.createElement('div');
     commentsContainer.classList.add('comments-container');
@@ -283,7 +283,7 @@ document.addEventListener('DOMContentLoaded', () => {
     commentsList.classList.add('comments-list');
     commentsContainer.appendChild(commentsList);
 
-    extraCastDetails.appendChild('comments-container');
+    extraCastDetails.appendChild(commentsContainer);
 
     const formContainer = document.createElement('div');
     formContainer.classList.add('comment-form-container');
