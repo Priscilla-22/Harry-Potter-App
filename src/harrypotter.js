@@ -90,11 +90,14 @@ document.addEventListener('DOMContentLoaded', () => {
               }
             });
 
+             const containerDiv = document.createElement('div');
+             containerDiv.classList.add('table-container');
+
             const headerRow = document.createElement('tr');
             headerRow.innerHTML = `
             <th>Name</th>
             <th>Actor</th>
-            <th>Year of Birth</th>
+            <th>Y.O.B</th>
             <th>House</th>
           `;
             const tbody = document.createElement('tbody');
@@ -120,6 +123,9 @@ document.addEventListener('DOMContentLoaded', () => {
                 tbody.appendChild(row);
               }
             });
+             containerDiv.appendChild(headerRow);
+             containerDiv.appendChild(tbody);
+             popupTable.appendChild(containerDiv);
             popupContainer.appendChild(popupTable);
 
             document.body.appendChild(popupContainer);
