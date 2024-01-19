@@ -246,10 +246,10 @@ span {
 
 
 .btn-go-back {
-    margin-left: 15%;
+    /* margin-left: 15%; */
     margin-right: 30px;
     border-radius: 6px;
-    margin-top: 70px;
+    /* margin-top: 70px; */
     padding: 5px;
     transition: transform 0.3 ease-in-out;
 }
