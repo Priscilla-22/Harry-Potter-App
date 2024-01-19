@@ -238,13 +238,16 @@ span {
 
 .more-details-content {
     max-height: 150px;
+    width:530px;
+    padding:10px;
     overflow-y: auto;
+    border-radius: 4px;
     border: 1px solid #ccc;
 }
 
 .extraCastDetails-Container {
-    /* display: flex; */
-    /* flex-direction: column; */
+    display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
 }
@@ -254,7 +257,8 @@ span {
     margin-right: 30px;
     border-radius: 6px;
     padding: 5px;
-    /* margin-top: 20%; */
+    margin-left: 190px;
+    margin-top: 20px;
     transition: transform 0.3 ease-in-out;
 }
 
@@ -289,6 +293,7 @@ span {
 
 .comment-form-container {
     margin-top: 20px;
+    width:500px;
 }
 
 .comment-form {
@@ -298,7 +303,8 @@ span {
 
 .comment-input {
     flex-grow: 1;
-    padding: 5px;
+    padding: 15px;
+    margin-top: 10px;
     border: 1px solid #ccc;
     border-radius: 5px;
 }
