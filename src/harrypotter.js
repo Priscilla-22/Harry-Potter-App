@@ -287,6 +287,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const formContainer = document.createElement('div');
     formContainer.classList.add('comment-form-container');
+        formContainer.textContent = 'WHAT DO YOU LIKE ABOUT THE CHARACTER? 😊';
+
 
     const form = document.createElement('form');
     form.classList.add('comment-form');
@@ -305,15 +307,16 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const input = document.createElement('input');
     input.classList.add('comment-input');
+    
     input.placeholder = 'Add a comment...';
 
     const submitBtn = document.createElement('button');
     submitBtn.classList.add('comment-submit-btn');
     submitBtn.textContent = 'Submit';
 
+    formContainer.appendChild(form);
     form.appendChild(input);
     form.appendChild(submitBtn);
-    formContainer.appendChild(form);
     extraCastDetails.appendChild(formContainer);
 
     extraCastDetails.appendChild(commentsContainer);
