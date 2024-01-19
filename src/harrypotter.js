@@ -432,8 +432,9 @@ function clearExtraCastDetails() {
   goForwardBtn.innerText = 'Go Forward';
   goForwardBtn.addEventListener('click', goForward);
 
-  extraCastDetails.appendChild(goBackBtn);
-  extraCastDetails.appendChild(goForwardBtn);
+const buttonsContainer = document.querySelector('.buttons-container');
+buttonsContainer.appendChild(goBackBtn);
+  buttonsContainer.appendChild(goForwardBtn);
 
   fetchCastDetails(currentCastId);
 });
