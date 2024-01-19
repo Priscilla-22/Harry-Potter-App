@@ -235,22 +235,26 @@ span {
 .details-table tr:nth-child(even) {
     background-color: #f9f9f9;
 }
-/* #more-details-container{
 
-} */
 .more-details-content {
     max-height: 150px;
     overflow-y: auto;
     border: 1px solid #ccc;
 }
 
+.extraCastDetails-Container {
+    /* display: flex; */
+    /* flex-direction: column; */
+    align-items: center;
+    justify-content: center;
+}
+
 
 .btn-go-back {
-    /* margin-left: 15%; */
     margin-right: 30px;
     border-radius: 6px;
-    /* margin-top: 70px; */
     padding: 5px;
+    /* margin-top: 20%; */
     transition: transform 0.3 ease-in-out;
 }
 
@@ -270,10 +274,6 @@ span {
     cursor: pointer;
 }
 
-.comments-container {
-    margin-top: 20px;
-}
-
 .comments-list {
     list-style-type: none;
     padding: 0;
@@ -289,7 +289,6 @@ span {
 
 .comment-form-container {
     margin-top: 20px;
-    /* display: flex-start; */
 }
 
 .comment-form {
