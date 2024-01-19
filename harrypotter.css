@@ -81,7 +81,6 @@ h1 {
     padding: 7px;
     white-space: nowrap;
     box-sizing: border-box;
-    width: 460px;
 }
 
 .popup-table th {
@@ -103,7 +102,7 @@ h1 {
 
 .popup-table tr {
     display: table-row;
-    width: 100%;
+    /* width: 100%; */
     box-sizing: border-box;
 }
 
