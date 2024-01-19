@@ -5,6 +5,10 @@ document.addEventListener('DOMContentLoaded', () => {
   );
   const castContainer = document.querySelector('.cast-container');
 
+  const extraCastDetails = document.querySelector(
+    '.extraCastDetails-Container'
+  );
+
   const houseLogoPaths = {
     Gryffindor:
       'https://ik.imagekit.io/96nylqpko/Gryffindor_ClearBG.jpg?updatedAt=1705429922438',
@@ -258,13 +262,61 @@ document.addEventListener('DOMContentLoaded', () => {
     const houseLogo = document.createElement('img');
     houseLogo.classList.add('house-logo');
     houseLogo.src = houseLogoPaths[cast.house] || defaultHouseLogoPath;
+    castDetailsContainer.appendChild(houseLogoContainer);
+    houseLogoContainer.appendChild(houseLogo);
+
+    castContainer.appendChild(castDetailsContainer);
 
     const moreDetailsContainer = createMoreDetailsContainer(cast);
     moreDetailsContainer.classList.add('more-info');
 
-    castDetailsContainer.appendChild(houseLogoContainer);
-    houseLogoContainer.appendChild(houseLogo);
-    castContainer.appendChild(moreDetailsContainer);
+    extraCastDetails.appendChild(moreDetailsContainer);
+
+    const commentsContainer = document.createElement('div');
+    commentsContainer.classList.add('comments-container');
+
+    const commentsTitle = document.createElement('h4');
+    commentsTitle.textContent = 'Comments:';
+    commentsContainer.appendChild(commentsTitle);
+
+    const commentsList = document.createElement('ul');
+    commentsList.classList.add('comments-list');
+    commentsContainer.appendChild(commentsList);
+
+    extraCastDetails.appendChild('comments-container');
+
+    const formContainer = document.createElement('div');
+    formContainer.classList.add('comment-form-container');
+
+    const form = document.createElement('form');
+    form.classList.add('comment-form');
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const input = document.querySelector('.comment-input');
+      const commentText = input.value;
+      if (commentText.trim()) {
+        const newComment = document.createElement('li');
+        newComment.classList.add('comment-item');
+        newComment.textContent = commentText;
+        commentsList.appendChild(newComment);
+        input.value = '';
+      }
+    });
+
+    const input = document.createElement('input');
+    input.classList.add('comment-input');
+    input.placeholder = 'Add a comment...';
+
+    const submitBtn = document.createElement('button');
+    submitBtn.classList.add('comment-submit-btn');
+    submitBtn.textContent = 'Submit';
+
+    form.appendChild(input);
+    form.appendChild(submitBtn);
+    formContainer.appendChild(form);
+    extraCastDetails.appendChild(formContainer);
+
+    extraCastDetails.appendChild(commentsContainer);
 
     const popupContainer = document.querySelector('.popup-container');
     if (popupContainer) {
@@ -292,7 +344,8 @@ document.addEventListener('DOMContentLoaded', () => {
     moreDetailsContainer.appendChild(moreDetailsBtn);
     moreDetailsContainer.appendChild(createMoreDetailsContent(cast));
 
-    return moreDetailsContainer;
+    extraCastDetails.appendChild(moreDetailsContainer);
+    return extraCastDetails;
   }
 
   function createMoreDetailsContent(cast) {
@@ -362,8 +415,8 @@ document.addEventListener('DOMContentLoaded', () => {
   goForwardBtn.innerText = 'Go Forward';
   goForwardBtn.addEventListener('click', goForward);
 
-  document.body.appendChild(goBackBtn);
-  document.body.appendChild(goForwardBtn);
+  extraCastDetails.appendChild(goBackBtn);
+  extraCastDetails.appendChild(goForwardBtn);
 
   fetchCastDetails(currentCastId);
 });
