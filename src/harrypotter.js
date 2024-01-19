@@ -270,17 +270,18 @@ document.addEventListener('DOMContentLoaded', () => {
     const moreDetailsContainer = createMoreDetailsContainer(cast);
     moreDetailsContainer.classList.add('more-info');
 
-    // extraCastDetails.appendChild(moreDetailsContainer);
-
     const commentsContainer = document.createElement('div');
     commentsContainer.classList.add('comments-container');
 
     const commentsTitle = document.createElement('h4');
     commentsTitle.textContent = 'Comments:';
-    commentsContainer.appendChild(commentsTitle);
 
     const commentsList = document.createElement('ul');
     commentsList.classList.add('comments-list');
+    commentsContainer.appendChild(commentsList);
+    commentsList.addEventListener('click', handleCommentItemClick); // Add this line
+
+    commentsContainer.appendChild(commentsTitle);
     commentsContainer.appendChild(commentsList);
 
     extraCastDetails.appendChild(commentsContainer);
@@ -296,12 +297,12 @@ document.addEventListener('DOMContentLoaded', () => {
       const input = document.querySelector('.comment-input');
       const commentText = input.value;
       if (commentText.trim()) {
-        // Send a POST request to the server to create a new comment
-        fetch("http://localhost:3000/comments", {
+        // POST request to the server to create a new comment
+        fetch('http://localhost:3000/comments', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
-            'Accept':'application/json'
+            Accept: 'application/json',
           },
           body: JSON.stringify({
             castId: currentCastId,
@@ -317,7 +318,10 @@ document.addEventListener('DOMContentLoaded', () => {
               commentsContainer.querySelector('.comments-list');
             const newCommentElement = document.createElement('li');
             newCommentElement.classList.add('comment-item');
-            newCommentElement.textContent = newComment.text;
+            newCommentElement.dataset.id = newComment.id;
+            newCommentElement.innerHTML = `
+               <span>${newComment.text}</span><button class="delete-comment-btn" data-id="${newComment.id}">Delete</button>
+`;
             commentsList.appendChild(newCommentElement);
             input.value = '';
           })
@@ -342,20 +346,6 @@ document.addEventListener('DOMContentLoaded', () => {
     extraCastDetails.appendChild(formContainer);
 
     extraCastDetails.appendChild(commentsContainer);
-
-     function deleteComment(event) {
-       const commentId = event.target.dataset.id;
-       fetch(`http://localhost:3000/comments/${commentId}`, {
-         method: 'DELETE',
-       })
-         .then(() => {
-           const commentItem = event.target.closest('.comment-item');
-           commentItem.remove();
-         })
-         .catch((error) => {
-           console.error('Error deleting comment:', error);
-         });
-     }
     const popupContainer = document.querySelector('.popup-container');
     if (popupContainer) {
       popupContainer.remove();
@@ -365,6 +355,8 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     }
   }
+
+  // handle comment item clicks
   function handleCommentItemClick(event) {
     const commentItem = event.target.closest('.comment-item');
     const commentId = commentItem.dataset.id;
@@ -374,6 +366,21 @@ document.addEventListener('DOMContentLoaded', () => {
     } else {
       showCommentDetails(commentId);
     }
+  }
+
+  // function to delete a comment
+  function deleteComment(commentId) {
+    fetch(`http://localhost:3000/comments/${commentId}`, {
+      method: 'DELETE',
+    })
+      .then(() => {
+        const commentsList = document.querySelector('.comments-list');
+        const commentItem = document.querySelector(`[data-id="${commentId}"]`);
+        commentItem.remove();
+      })
+      .catch((error) => {
+        console.error('Error deleting comment:', error);
+      });
   }
 
   function createMoreDetailsContainer(cast) {
@@ -424,7 +431,6 @@ document.addEventListener('DOMContentLoaded', () => {
       table.appendChild(row);
     };
 
-    // Use ternary operator to conditionally add table rows
     cast.wand && cast.wand.wood && addTableRow('Wand Wood', cast.wand.wood);
     cast.wand && cast.wand.core && addTableRow('Wand Core', cast.wand.core);
     cast.wand &&
@@ -450,21 +456,19 @@ document.addEventListener('DOMContentLoaded', () => {
   function goBack() {
     currentCastId = Math.max(1, currentCastId - 1);
     fetchCastDetails(currentCastId);
-      clearExtraCastDetails();
-      clearExtraCastDetails();
-
+    clearExtraCastDetails();
     clearExtraCastDetails();
 
+    clearExtraCastDetails();
   }
 
   function goForward() {
     currentCastId += 1;
     fetchCastDetails(currentCastId);
-      clearExtraCastDetails();
-      clearExtraCastDetails();
-
+    clearExtraCastDetails();
     clearExtraCastDetails();
 
+    clearExtraCastDetails();
   }
 
   function clearExtraCastDetails() {
