@@ -287,8 +287,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const formContainer = document.createElement('div');
     formContainer.classList.add('comment-form-container');
-        formContainer.textContent = 'WHAT DO YOU LIKE ABOUT THE CHARACTER? 😊';
-
+    formContainer.textContent = 'WHAT DO YOU LIKE ABOUT THE CHARACTER? 😊';
 
     const form = document.createElement('form');
     form.classList.add('comment-form');
@@ -297,17 +296,40 @@ document.addEventListener('DOMContentLoaded', () => {
       const input = document.querySelector('.comment-input');
       const commentText = input.value;
       if (commentText.trim()) {
-        const newComment = document.createElement('li');
-        newComment.classList.add('comment-item');
-        newComment.textContent = commentText;
-        commentsList.appendChild(newComment);
-        input.value = '';
+        // Send a POST request to the server to create a new comment
+        fetch("http://localhost:3000/comments", {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'Accept':'application/json'
+          },
+          body: JSON.stringify({
+            castId: currentCastId,
+            text: commentText,
+          }),
+        })
+          .then((response) => response.json())
+          .then((newComment) => {
+            const commentsContainer = document.querySelector(
+              '.comments-container'
+            );
+            const commentsList =
+              commentsContainer.querySelector('.comments-list');
+            const newCommentElement = document.createElement('li');
+            newCommentElement.classList.add('comment-item');
+            newCommentElement.textContent = newComment.text;
+            commentsList.appendChild(newCommentElement);
+            input.value = '';
+          })
+          .catch((error) => {
+            console.error('Error creating comment:', error);
+          });
       }
     });
 
     const input = document.createElement('input');
     input.classList.add('comment-input');
-    
+
     input.placeholder = 'Add a comment...';
 
     const submitBtn = document.createElement('button');
@@ -321,6 +343,19 @@ document.addEventListener('DOMContentLoaded', () => {
 
     extraCastDetails.appendChild(commentsContainer);
 
+     function deleteComment(event) {
+       const commentId = event.target.dataset.id;
+       fetch(`http://localhost:3000/comments/${commentId}`, {
+         method: 'DELETE',
+       })
+         .then(() => {
+           const commentItem = event.target.closest('.comment-item');
+           commentItem.remove();
+         })
+         .catch((error) => {
+           console.error('Error deleting comment:', error);
+         });
+     }
     const popupContainer = document.querySelector('.popup-container');
     if (popupContainer) {
       popupContainer.remove();
@@ -328,6 +363,16 @@ document.addEventListener('DOMContentLoaded', () => {
       if (overlay) {
         overlay.remove();
       }
+    }
+  }
+  function handleCommentItemClick(event) {
+    const commentItem = event.target.closest('.comment-item');
+    const commentId = commentItem.dataset.id;
+
+    if (event.target.classList.contains('delete-comment-btn')) {
+      deleteComment(commentId);
+    } else {
+      showCommentDetails(commentId);
     }
   }
 
@@ -350,7 +395,7 @@ document.addEventListener('DOMContentLoaded', () => {
     moreDetailsContainer.appendChild(moreDetailsBtn);
     moreDetailsContainer.appendChild(createMoreDetailsContent(cast));
 
-    detailsContainer.appendChild(moreDetailsContainer)
+    detailsContainer.appendChild(moreDetailsContainer);
     extraCastDetails.appendChild(detailsContainer);
     return detailsContainer;
   }
@@ -402,11 +447,13 @@ document.addEventListener('DOMContentLoaded', () => {
     return moreDetailsContent;
   }
 
-
   function goBack() {
     currentCastId = Math.max(1, currentCastId - 1);
     fetchCastDetails(currentCastId);
       clearExtraCastDetails();
+      clearExtraCastDetails();
+
+    clearExtraCastDetails();
 
   }
 
@@ -414,14 +461,17 @@ document.addEventListener('DOMContentLoaded', () => {
     currentCastId += 1;
     fetchCastDetails(currentCastId);
       clearExtraCastDetails();
+      clearExtraCastDetails();
+
+    clearExtraCastDetails();
 
   }
 
-function clearExtraCastDetails() {
-  while (extraCastDetails.firstChild) {
-    extraCastDetails.removeChild(extraCastDetails.firstChild);
+  function clearExtraCastDetails() {
+    while (extraCastDetails.firstChild) {
+      extraCastDetails.removeChild(extraCastDetails.firstChild);
+    }
   }
-}
   const goBackBtn = document.createElement('button');
   goBackBtn.classList.add('btn-go-back');
   goBackBtn.innerText = 'Go Back';
@@ -432,8 +482,8 @@ function clearExtraCastDetails() {
   goForwardBtn.innerText = 'Go Forward';
   goForwardBtn.addEventListener('click', goForward);
 
-const buttonsContainer = document.querySelector('.buttons-container');
-buttonsContainer.appendChild(goBackBtn);
+  const buttonsContainer = document.querySelector('.buttons-container');
+  buttonsContainer.appendChild(goBackBtn);
   buttonsContainer.appendChild(goForwardBtn);
 
   fetchCastDetails(currentCastId);
