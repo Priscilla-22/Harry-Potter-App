@@ -67,6 +67,7 @@ h1 {
     max-height: 250px;
     overflow-y: hidden;
     overflow-x: hidden;
+    cursor:pointer;
 }
 
 .popup-table {
