@@ -329,6 +329,9 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   function createMoreDetailsContainer(cast) {
+    const detailsContainer = document.createElement('div');
+    detailsContainer.classList.add('details-container');
+
     const moreDetailsContainer = document.createElement('details');
     moreDetailsContainer.id = 'more-details-container';
 
@@ -344,7 +347,8 @@ document.addEventListener('DOMContentLoaded', () => {
     moreDetailsContainer.appendChild(moreDetailsBtn);
     moreDetailsContainer.appendChild(createMoreDetailsContent(cast));
 
-    extraCastDetails.appendChild(moreDetailsContainer);
+    detailsContainer.appendChild(moreDetailsContainer)
+    extraCastDetails.appendChild(detailsContainer);
     return extraCastDetails;
   }
 
