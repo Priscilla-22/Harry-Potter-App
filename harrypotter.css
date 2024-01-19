@@ -213,10 +213,7 @@ span {
     transform: scale(0.9)
 }
 
-details {
-    margin-left: 330px;
-    margin-top: -90px;
-}
+
 
 .details-table {
     border-collapse: collapse;
@@ -238,7 +235,9 @@ details {
 .details-table tr:nth-child(even) {
     background-color: #f9f9f9;
 }
+/* #more-details-container{
 
+} */
 .more-details-content {
     max-height: 150px;
     overflow-y: auto;
@@ -269,4 +268,52 @@ details {
 .btn-go-forward:hover {
     transform: scale(1.1);
     cursor: pointer;
+}
+
+.comments-container {
+    margin-top: 20px;
+}
+
+.comments-list {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+.comment-item {
+    padding: 5px 10px;
+    margin-bottom: 5px;
+    background-color: #f5f5f5;
+    border-radius: 5px;
+}
+
+.comment-form-container {
+    margin-top: 50px;
+    display: flex-start;
+}
+
+.comment-form {
+    display: flex;
+    align-items: center;
+}
+
+.comment-input {
+    flex-grow: 1;
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.comment-submit-btn {
+    padding: 5px 10px;
+    margin-left: 10px;
+    border-radius: 5px;
+    background-color: #d3aa23;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+.comment-submit-btn:hover {
+    background-color: #b58b1a;
 }
