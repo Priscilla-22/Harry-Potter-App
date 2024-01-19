@@ -416,10 +416,10 @@ document.addEventListener('DOMContentLoaded', () => {
       clearExtraCastDetails();
 
   }
+
 function clearExtraCastDetails() {
-  const extraCastDetailsChildren = extraCastDetails.children;
-  while (extraCastDetailsChildren.length > 2) {
-    extraCastDetails.removeChild(extraCastDetailsChildren[2]);
+  while (extraCastDetails.firstChild) {
+    extraCastDetails.removeChild(extraCastDetails.firstChild);
   }
 }
   const goBackBtn = document.createElement('button');
