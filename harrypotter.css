@@ -156,11 +156,12 @@ h1 {
 .imgContainer {
     width: 250px;
     height: 350px;
+    border:2px solid black;
 }
 
 .actor-img {
-    width: 250px;
-    height: 350px;
+    width: 248px;
+    height: 348px;
 }
 
 
@@ -177,19 +178,6 @@ h1 {
     margin-top: 30px;
     margin-left: 20px;
 }
-
-/* .detailsContainer {
-    border: 1px solid #1f1d1d;
-    align-items: flex-start;
-    margin: 0 auto;
-
-} */
-
-/* .imgContainer,
-.briefInfoContainer,
-.houseLogoContainer {
-    border: 1px solid #000;
-} */
 
 .house-logo {
     width: 60px;
@@ -274,8 +262,3 @@ details {
     transform: scale(1.1);
     cursor: pointer;
 }
-
-/* #comment-container {
-    margin-top: 50px;
-    margin-left: 60%;
-} */
