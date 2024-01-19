@@ -90,8 +90,8 @@ document.addEventListener('DOMContentLoaded', () => {
               }
             });
 
-             const containerDiv = document.createElement('div');
-             containerDiv.classList.add('table-container');
+            const containerDiv = document.createElement('div');
+            containerDiv.classList.add('table-container');
 
             const headerRow = document.createElement('tr');
             headerRow.innerHTML = `
@@ -123,9 +123,9 @@ document.addEventListener('DOMContentLoaded', () => {
                 tbody.appendChild(row);
               }
             });
-             containerDiv.appendChild(headerRow);
-             containerDiv.appendChild(tbody);
-             popupTable.appendChild(containerDiv);
+            containerDiv.appendChild(headerRow);
+            containerDiv.appendChild(tbody);
+            popupTable.appendChild(containerDiv);
             popupContainer.appendChild(popupTable);
 
             document.body.appendChild(popupContainer);
@@ -297,7 +297,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   function createMoreDetailsContent(cast) {
     const moreDetailsContent = document.createElement('div');
-    moreDetailsContent.classList.add ('more-details-content');
+    moreDetailsContent.classList.add('more-details-content');
 
     const table = document.createElement('table');
     table.classList.add('details-table');
