@@ -81,6 +81,7 @@ h1 {
     padding: 7px;
     white-space: nowrap;
     box-sizing: border-box;
+    width: 100px;
 }
 
 .popup-table th {
@@ -102,7 +103,7 @@ h1 {
 
 .popup-table tr {
     display: table-row;
-    /* width: 100%; */
+    width: 100%;
     box-sizing: border-box;
 }
 
@@ -125,6 +126,11 @@ h1 {
     overflow-x: hidden;
     padding-right: 5px;
 }
+
+.table-container tr td:last-child {
+    text-align: center;
+}
+
 
 .cast-name {
     font-family: 'Harry P', sans-serif;
@@ -244,7 +250,6 @@ details {
     margin-top: 70px;
     padding: 5px;
     transition: transform 0.3 ease-in-out;
-
 }
 
 .btn-go-back:hover {
