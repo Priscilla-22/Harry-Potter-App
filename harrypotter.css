@@ -155,6 +155,7 @@ h1 {
 .cast-container {
     width: 850px;
     margin: 0 auto;
+    margin-left: 25%;
 
 }
 
@@ -189,7 +190,6 @@ h1 {
 .houseLogoContainer {
     height: 60px;
     margin-top: 30px;
-    margin-left: 20px;
 }
 
 .house-logo {
