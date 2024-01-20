@@ -1,4 +1,5 @@
 document.addEventListener('DOMContentLoaded', () => {
+
   const baseUrl = 'http://localhost:3000/data';
   const castNameListContainer = document.querySelector(
     '.castNameList-container'
@@ -36,8 +37,9 @@ document.addEventListener('DOMContentLoaded', () => {
       });
   }
 
-  //search functionality
+  /**** search functionality ****/
 
+//search popup table
   function toggleOverlay() {
     const body = document.body;
     const overlay = document.createElement('div');
@@ -207,7 +209,10 @@ document.addEventListener('DOMContentLoaded', () => {
       });
     });
 
+  /*** Renders cast details ***/
   function renderCastDetails(cast) {
+        clearExtraCastDetails();
+
     castContainer.innerHTML = '';
 
     const castDetailsContainer = document.createElement('div');
@@ -270,6 +275,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const moreDetailsContainer = createMoreDetailsContainer(cast);
     moreDetailsContainer.classList.add('more-info');
 
+    /*** Comment Form ***/
     const commentsContainer = document.createElement('div');
     commentsContainer.classList.add('comments-container');
 
@@ -279,7 +285,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const commentsList = document.createElement('ul');
     commentsList.classList.add('comments-list');
     commentsContainer.appendChild(commentsList);
-    commentsList.addEventListener('click', handleCommentItemClick); // Add this line
+    commentsList.addEventListener('click', handleCommentItemClick); 
 
     commentsContainer.appendChild(commentsTitle);
     commentsContainer.appendChild(commentsList);
@@ -297,7 +303,8 @@ document.addEventListener('DOMContentLoaded', () => {
       const input = document.querySelector('.comment-input');
       const commentText = input.value;
       if (commentText.trim()) {
-        // POST request to the server to create a new comment
+
+        /**** POST request to the server to create a new comment ****/
         fetch('http://localhost:3000/comments', {
           method: 'POST',
           headers: {
@@ -356,7 +363,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }
 
-  // handle comment item clicks
+  /*** handle comment delete button clicks ***/
   function handleCommentItemClick(event) {
     const commentItem = event.target.closest('.comment-item');
     const commentId = commentItem.dataset.id;
@@ -368,7 +375,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }
 
-  // function to delete a comment
+  /*** function to delete a comment ***/
   function deleteComment(commentId) {
     fetch(`http://localhost:3000/comments/${commentId}`, {
       method: 'DELETE',
@@ -383,6 +390,7 @@ document.addEventListener('DOMContentLoaded', () => {
       });
   }
 
+  /*** display the  more details of a specific cast in a modal window ***/
   function createMoreDetailsContainer(cast) {
     const detailsContainer = document.createElement('div');
     detailsContainer.classList.add('details-container');
@@ -470,6 +478,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     clearExtraCastDetails();
   }
+
 
   function clearExtraCastDetails() {
     while (extraCastDetails.firstChild) {
