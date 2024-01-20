@@ -1,4 +1,5 @@
 @import url('https://fonts.cdnfonts.com/css/harry-p');
+@import url('https://fonts.googleapis.com/css2?family=Lemon&display=swap');
 
 body {
     /* background-color: black; */
@@ -189,6 +190,7 @@ h1 {
 }
 
 .house-logo {
+    @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100&display=swap');
     width: 60px;
     height: 60px;
 }
@@ -198,7 +200,7 @@ hr {
 
 }
 
-span {
+p span {
     font-weight: 1000;
 }
 
@@ -238,8 +240,8 @@ span {
 
 .more-details-content {
     max-height: 150px;
-    width:530px;
-    padding:10px;
+    width: 530px;
+    padding: 10px;
     overflow-y: auto;
     border-radius: 4px;
     border: 1px solid #ccc;
@@ -260,6 +262,9 @@ span {
     margin-left: 190px;
     margin-top: 20px;
     transition: transform 0.3 ease-in-out;
+    background-color: #8f7a35;
+    font-size: 14px;
+    font-family: 'Lemon', serif;
 }
 
 .btn-go-back:hover {
@@ -271,6 +276,9 @@ span {
     border-radius: 6px;
     padding: 5px;
     transition: transform 0.3 ease-in-out;
+    background-color: #8f7a35;
+    font-size: 14px;
+    font-family: 'Lemon', serif;
 }
 
 .btn-go-forward:hover {
@@ -293,7 +301,12 @@ span {
 
 .comment-form-container {
     margin-top: 20px;
-    width:500px;
+    width: 500px;
+}
+
+.comment-form-container p {
+    font-family: 'Lemon', serif;
+    color: black;
 }
 
 .comment-form {
@@ -305,8 +318,18 @@ span {
     flex-grow: 1;
     padding: 15px;
     margin-top: 10px;
-    border: 1px solid #ccc;
+    border: 2px solid #ccc;
     border-radius: 5px;
+}
+
+.comment-item {
+    list-style-type: square;
+}
+
+.comment-item span {
+    font-size: 14px;
+    letter-spacing: 2px;
+    margin-right: 5px;
 }
 
 .comment-submit-btn {
@@ -321,4 +344,18 @@ span {
 
 .comment-submit-btn:hover {
     background-color: #b58b1a;
+}
+
+.delete-comment-btn {
+    padding: 5px 10px;
+    margin-left: 10px;
+    border-radius: 5px;
+    background-color: #a55628;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+.delete-comment-btn:hover {
+    background-color: #c47547;
 }
