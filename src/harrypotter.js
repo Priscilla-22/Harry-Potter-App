@@ -294,7 +294,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const formContainer = document.createElement('div');
     formContainer.classList.add('comment-form-container');
-    formContainer.textContent = 'WHAT DO YOU LIKE ABOUT THE CHARACTER? 😊';
+    formContainer.innerHTML =` <p>WHAT DO YOU LIKE ABOUT THE CHARACTER? 😊</p>`;
 
     const form = document.createElement('form');
     form.classList.add('comment-form');
