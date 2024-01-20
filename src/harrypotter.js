@@ -239,7 +239,7 @@ document.addEventListener('DOMContentLoaded', () => {
       cast.alternate_names !== null &&
       cast.alternate_names.length > 0
     ) {
-      altName.innerHTML = `<strong>AKA:</strong> ${cast.alternate_names}`;
+      altName.innerHTML = `<strong>AKA 🤣:</strong> ${cast.alternate_names}`;
     }
 
     const actor = document.createElement('p');
@@ -439,12 +439,12 @@ document.addEventListener('DOMContentLoaded', () => {
       table.appendChild(row);
     };
 
-    cast.wand && cast.wand.wood && addTableRow('Wand Wood', cast.wand.wood);
-    cast.wand && cast.wand.core && addTableRow('Wand Core', cast.wand.core);
+    cast.wand && cast.wand.wood && addTableRow('Wand Wood 🪄', cast.wand.wood);
+    cast.wand && cast.wand.core && addTableRow('Wand Core 🪄', cast.wand.core);
     cast.wand &&
       cast.wand.length &&
       addTableRow('Wand Length', cast.wand.length);
-    cast.house && addTableRow('House', cast.house);
+    cast.house && addTableRow('House 🏚️', cast.house);
     cast.dateOfBirth && addTableRow('Date of Birth', cast.dateOfBirth);
     cast.yearOfBirth && addTableRow('Year of Birth', cast.yearOfBirth);
     cast.wizard && addTableRow('Wizard', cast.wizard ? 'Yes' : 'No');
