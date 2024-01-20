@@ -2,8 +2,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Lemon&display=swap');
 
 body {
-    /* background-image: url("https://images.unsplash.com/photo-1467646208740-18124b37eb58?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8OXx8Ymx1ciUyMGhhcnJ5JTIwcG90dGVyJTIwaW1hZ2VzfGVufDB8fDB8fHww"); */
+    background-image: url("https://media.istockphoto.com/id/1355955841/vector/white-abstract-background-vector-illustration.jpg?s=612x612&w=0&k=20&c=uHOTtTPuiQYcgF60Qkkm6exgxgroTjJXICTqA3HgPAY=");
     background-repeat: none;
+    background-size: cover;
     /* backdrop-filter: blur(5px); */
 }
 
@@ -22,7 +23,7 @@ h1 {
     font-family: 'Harry P', sans-serif;
     font-size: 60px;
     word-spacing: 10px;
-    color: #8d721a;
+    color: #cc9619;
     margin-left: 25%;
     justify-content: center;
     align-items: center;
@@ -141,7 +142,7 @@ h1 {
 .cast-name {
     font-family: 'Harry P', sans-serif;
     letter-spacing: 4px;
-    font-size: 35px;
+    font-size: 30px;
 }
 
 .castNames {
@@ -155,8 +156,7 @@ h1 {
 .cast-container {
     width: 850px;
     margin: 0 auto;
-    margin-left: 25%;
-
+    margin-left: 20%;
 }
 
 #casts-details {
@@ -228,7 +228,7 @@ p span {
 
 .label-cell,
 .value-cell {
-    border: 1px solid #ddd;
+    border: 2px solid #25222254;
     padding: 8px;
     text-align: left;
 }
@@ -243,12 +243,13 @@ p span {
 }
 
 .more-details-content {
+    cursor: pointer;
     max-height: 150px;
     width: 530px;
     padding: 10px;
     overflow-y: auto;
-    border-radius: 4px;
-    border: 1px solid #ccc;
+    box-shadow: rgba(0, 0, 0, 0.400) 0px 54px 55px, rgba(0, 0, 0, 0.3) 0px -12px 30px, rgba(0, 0, 0, 0.600) 0px 4px 6px, rgba(0, 0, 0, 0.600) 0px 12px 13px, rgba(0, 0, 0, 0.600) 0px -3px 5px;
+    border: 2px dotted rgb(148, 84, 32);
 }
 
 .extraCastDetails-Container {
@@ -256,39 +257,11 @@ p span {
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    width: 700px;
+    margin-left: 30%;
 }
 
 
-.btn-go-back {
-    margin-right: 30px;
-    border-radius: 6px;
-    padding: 5px;
-    margin-left: 190px;
-    margin-top: 20px;
-    transition: transform 0.3 ease-in-out;
-    background-color: #8f7a35;
-    font-size: 14px;
-    font-family: 'Lemon', serif;
-}
-
-.btn-go-back:hover {
-    transform: scale(1.1);
-    cursor: pointer;
-}
-
-.btn-go-forward {
-    border-radius: 6px;
-    padding: 5px;
-    transition: transform 0.3 ease-in-out;
-    background-color: #8f7a35;
-    font-size: 14px;
-    font-family: 'Lemon', serif;
-}
-
-.btn-go-forward:hover {
-    transform: scale(1.1);
-    cursor: pointer;
-}
 
 .comments-list {
     list-style-type: none;
@@ -299,7 +272,7 @@ p span {
 .comment-item {
     padding: 5px 10px;
     margin-bottom: 5px;
-    background-color: #f5f5f5;
+    background-color: #cfc9c9;
     border-radius: 5px;
 }
 
@@ -331,13 +304,16 @@ p span {
 }
 
 .comment-item span {
-    font-size: 14px;
-    letter-spacing: 2px;
+    font-size: 15px;
+    letter-spacing: 1px;
     margin-right: 5px;
+    font-weight: 400;
 }
-.comments-container h4{
-    font-size:16px;
+
+.comments-container h4 {
+    font-size: 16px;
 }
+
 .comment-submit-btn {
     padding: 5px 10px;
     margin-left: 10px;
@@ -364,4 +340,41 @@ p span {
 
 .delete-comment-btn:hover {
     background-color: #c47547;
+}
+
+.buttons-container {
+    margin-left: 8%;
+    width: 500px;
+
+}
+
+.btn-go-back {
+    margin-right: 30px;
+    border-radius: 6px;
+    padding: 5px;
+    margin-left: 190px;
+    margin-top: 20px;
+    transition: transform 0.3 ease-in-out;
+    background-color: #b19027;
+    font-size: 14px;
+    font-family: 'Lemon', serif;
+}
+
+.btn-go-back:hover {
+    transform: scale(1.1);
+    cursor: pointer;
+}
+
+.btn-go-forward {
+    border-radius: 6px;
+    padding: 5px;
+    transition: transform 0.3 ease-in-out;
+    background-color: #b19027;
+    font-size: 14px;
+    font-family: 'Lemon', serif;
+}
+
+.btn-go-forward:hover {
+    transform: scale(1.1);
+    cursor: pointer;
 }
