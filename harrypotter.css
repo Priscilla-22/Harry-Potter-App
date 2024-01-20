@@ -212,6 +212,7 @@ p span {
     cursor: pointer;
     transition: transform 0.3 ease-in-out;
     font-family: 'Lemon', serif;
+    margin-bottom:8px;
 
 }
 
