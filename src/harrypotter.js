@@ -1,5 +1,4 @@
 document.addEventListener('DOMContentLoaded', () => {
-
   const baseUrl = 'http://localhost:3000/data';
   const castNameListContainer = document.querySelector(
     '.castNameList-container'
@@ -39,7 +38,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   /**** search functionality ****/
 
-//search popup table
+  //search popup table
   function toggleOverlay() {
     const body = document.body;
     const overlay = document.createElement('div');
@@ -211,7 +210,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   /*** Renders cast details ***/
   function renderCastDetails(cast) {
-        clearExtraCastDetails();
+    clearExtraCastDetails();
 
     castContainer.innerHTML = '';
 
@@ -285,7 +284,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const commentsList = document.createElement('ul');
     commentsList.classList.add('comments-list');
     commentsContainer.appendChild(commentsList);
-    commentsList.addEventListener('click', handleCommentItemClick); 
+    commentsList.addEventListener('click', handleCommentItemClick);
 
     commentsContainer.appendChild(commentsTitle);
     commentsContainer.appendChild(commentsList);
@@ -294,7 +293,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const formContainer = document.createElement('div');
     formContainer.classList.add('comment-form-container');
-    formContainer.innerHTML =` <p>WHAT DO YOU LIKE ABOUT THE CHARACTER? 😊</p>`;
+    formContainer.innerHTML = ` <p>WHAT DO YOU LIKE ABOUT THE CHARACTER? 😊</p>`;
 
     const form = document.createElement('form');
     form.classList.add('comment-form');
@@ -303,7 +302,6 @@ document.addEventListener('DOMContentLoaded', () => {
       const input = document.querySelector('.comment-input');
       const commentText = input.value;
       if (commentText.trim()) {
-
         /**** POST request to the server to create a new comment ****/
         fetch('http://localhost:3000/comments', {
           method: 'POST',
@@ -390,7 +388,7 @@ document.addEventListener('DOMContentLoaded', () => {
       });
   }
 
-  /*** display the  more details of a specific cast in a modal window ***/
+  /*** display the  more details of a specific cast ***/
   function createMoreDetailsContainer(cast) {
     const detailsContainer = document.createElement('div');
     detailsContainer.classList.add('details-container');
@@ -478,7 +476,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
     clearExtraCastDetails();
   }
-
 
   function clearExtraCastDetails() {
     while (extraCastDetails.firstChild) {
